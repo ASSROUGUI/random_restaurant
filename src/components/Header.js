@@ -4,18 +4,18 @@ import './Header.css'
 
 const Header = () => {
     return (
-     <div className='am'>
+     <div style={{ backgroundColor: '#0b9496 '}} >
 
-     <p style={{ backgroundColor: '#0b9496 ' ,color: 'white'  }} >
+     <div style={{ backgroundColor: '#0b9496 ' ,color: 'white'  }} >
      <Container className='Container'>
   <Row>
-  <Col xs={6} md={2}>
-<a href='' style={{ backgroundColor: '#0b9496 ' ,color: 'white' ,size:'small', display: 'block'
+  <Col xs={3} md={1}>
+<a href='' style={{ backgroundColor: '#0b9496 ' ,color: 'white' 
    , marginLeft: 'auto'
     ,marginRight: 'auto',
     width: '35%'}}>
 
-<img  className='d' style={{ width: '1erm' ,height:'auto', border: '1px solid red;'}} src="https://lh3.googleusercontent.com/37jL2YRS8UJJRLh2sni8O37X1iFkZEeM3SMa3d-xr0xl4n2XedR3Y6thjsIDIwoZffY=s360-rw" />
+<img  className='d' style={{ width: '1erm' ,height:'auto', border: '1px solid #0b9496' ,size:'small'}} src="https://lh3.googleusercontent.com/37jL2YRS8UJJRLh2sni8O37X1iFkZEeM3SMa3d-xr0xl4n2XedR3Y6thjsIDIwoZffY=s360-rw" />
 
 
  </a>
@@ -29,7 +29,7 @@ const Header = () => {
  </Col>
  </Row>
  </Container> 
-</p>
+</div>
 
 
   

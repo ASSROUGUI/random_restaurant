@@ -25,7 +25,7 @@ const Footer = () => {
 </div> */}
 <br/> 
 <div className='footer'>
-<a href='https://twitter.com/WainNakel'><i  id='x' class="fa fa-twitter" style={{ color:'grey' }}></i></a> {''}
+<a href='https://twitter.com/WainNakel'><i  id='x' className="fa fa-twitter" style={{ color:'grey' }}></i></a> {''}
   <a href='https://twitter.com/WainNakel'style={{ color:'grey' }}  > @WainNakel</a> | 2018 © جميع الحقوق محفوظة    |   <a style={{ color:'grey' }} href='http://wainnakel.com/privacy/'  > Privacy Policy </a>
  
  <br />   <br />

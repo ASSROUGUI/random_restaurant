@@ -35,11 +35,14 @@ export class Search extends React.Component {
         open:DataList[0].open,
         rating: DataList[0].rating,
    userLocation:
-    { 
-      lat:DataList[0].lat,
-      lon:DataList[0].lon,}
+   { 
+    lat:33,
+    lon:33
+  }
     , 
    loading: true };
+
+ 
 
    onClose = props => {
     if (this.state.showingInfoWindow) {
@@ -57,12 +60,14 @@ export class Search extends React.Component {
     showingInfoWindow: true
   });
   componentDidMount(props) {
+
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
 
         this.setState({
-          userLocation: { lat: this.state.lat, lng: this.state.lon },
+          userLocation: { lat: latitude, lon: longitude },
+          
           loading: false
         });
       },
@@ -95,8 +100,8 @@ export class Search extends React.Component {
           phoneNumber:generateRandomRestaurant.phoneNumber,
           open:generateRandomRestaurant.open,
           rating:generateRandomRestaurant.rating,
-          userLocation: { lat:  generateRandomRestaurant.lat, 
-            lng:generateRandomRestaurant.lon, },
+          // userLocation: { lat:  generateRandomRestaurant.lat, 
+          //   lng:generateRandomRestaurant.lon, },
           loading: false
         });
       },
@@ -131,7 +136,7 @@ export class Search extends React.Component {
     
     const { loading, userLocation } = this.state;
     const { google } = this.props;
-
+console.log('userLocation',{userLocation})
     if (loading) {
       return 'Loading....';
     }
@@ -140,7 +145,7 @@ export class Search extends React.Component {
         <div>
     
      <Header />
-     <br/> <br/>
+   
        {/* <List
        {...this.state} 
        handleClick={this.handleClick}
@@ -155,21 +160,22 @@ export class Search extends React.Component {
   <Alert.Heading>
     
     <a  target='_blank' href={this.state.link} style={{  color: '#0b9496'}}> 
-    {this.state.name}</a>   <p>  </p> 
-  
+    {this.state.name}</a>  
+    <p>{userLocation.lt} --- {userLocation.ln}</p>
   </Alert.Heading>
-  <p style={{  color: 'grey'}}>{this.state.cat}  </p>  
+  {/* <p style={{  color: 'grey'}}>{this.state.cat}  </p>  
   <p  style={{  color: 'grey'}}>  phoneNumber:{this.state.phoneNumber} --- open:{this.state.open}</p>
-  <p  style={{  color: 'grey'}}>  price in range:{this.state.price} $$ ---rate:{this.state.rating}  </p>  
+  <p  style={{  color: 'grey'}}>  price in range:{this.state.price} $$ ---rate:{this.state.rating}  </p>   */}
   <hr />
-  <Map style={{ width: '36rem'  ,height:'18rem' ,marginLeft:'-13px'}}
+  <Map style={{ width: '46rem'  ,height:'18rem' ,marginLeft:'113px'}}
         className={'map'}
           google={this.props.google}
           zoom={11}
-          initialCenter={userLocation}
+          initialCenter={{lat:this.state.lat, lng:this.state.lon}}
           onChange={(e) => { this.setState({ place: e }) }}
         >
-        <Marker style={{ color: 'blue' ,backgroundColor:'blue'  }} position={userLocation}
+        <Marker style={{ color: 'blue' ,backgroundColor:'blue'  }}
+         position={{lat:this.state.lat, lng:this.state.lon}}
           onClick={this.onMarkerClick}
           name={'Kenyatta International Convention Centre'}
           />
@@ -184,12 +190,11 @@ export class Search extends React.Component {
         </InfoWindow>
         
       </Map> 
-      
-  <p className="mb-0"> </p>
+   
 </Alert></Card.Title>
 <Card.Text style={{ width: '32rem'  ,height:'22rem' ,marginTop:'213px' }}>
 <Alert style={{ width: '4rem'  ,height:'4rem',position:'center' ,textAlign:'center' }}>
-<a href ={this.state.link} style={{ marginLeft:'244px'}}>
+<a href ={this.state.link} style={{ marginLeft:'444px'}}>
       <button type="button" className="btn btn-info">Button</button>
       </a>
 
@@ -197,7 +202,7 @@ export class Search extends React.Component {
 </Alert>
 </Card.Text>
 
-<button style={{marginTop:'-291px' }} onClick={this.handleClick}  id='h' className=" wbtn tooltipped pulse waves-effect waves-light btn modal-trigger green lighten-4 black-text"> اقترح اخر
+<button style={{marginTop:'-291px', marginLeft:'344px'}} onClick={this.handleClick}  id='h' className=" wbtn tooltipped pulse waves-effect waves-light btn modal-trigger green lighten-4 black-text"> اقترح اخر
   {loading && <span>
     <Spinner as="span"animation="grow"size="sm"role="status"aria-hidden="true"/>
 <Spinner as="span"animation="grow"size="sm"role="status"aria-hidden="true"/>   
@@ -205,22 +210,23 @@ export class Search extends React.Component {
 {!loading && <span>''</span>}
 </span>}
    </button> 
-   <br/>
+  
    {/* <Footer style={{width: '2rem'  ,height:'2rem' }}/> */}
-   <div className='Container'  style={{ marginTop:'-311px', height:' 100%',
+   <div className='Container'  style={{ marginTop:'-351px', height:' 100%',
+   marginLeft:'-222px',
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center'}} >
   
-  <div class="row"  >
-<div class="column12"   style={{padding:' 5px',}} >
+  <div className="row"  >
+<div className="column12"   style={{padding:' 5px',}} >
 <a href="https://play.google.com/store/apps/details?id=com.wainnakel.android">
 <img style={{ width: '5rem'  ,height:'2rem',  }} 
 src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTN7atac2-4z8u_OMUGHnpJZRA-1XYmwm-TzANqeJC4Yg6iBV-y'
 /> </a>
 </div>
-<div  class="column3"  style={{marginTop:'0px', padding:' 5px' }} >
+<div  className="column3"  style={{marginTop:'0px', padding:' 5px' }} >
 <a href="https://apps.apple.com/sa/app/wyn-nakl/id718380069">
 <img style={{ width: '5rem'  ,height:'2rem' ,marginLeft:'4px' }} 
 src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSsG3IVDuRBvFBZSR5k94FevQEddQ5CcRC5X3ADiio3NKp_byae'
@@ -228,8 +234,8 @@ src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSsG3IVDuRBvFBZSR5k9
 </div>
 
 </div>
-<br/> 
-<Footer />
+
+<Footer  />
 </div>
 
   
@@ -241,14 +247,13 @@ src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSsG3IVDuRBvFBZSR5k9
 <div id="index-banner" className="parallax-container">
 <div className="section no-pad-bot">
 <div className="container">
-<br/> <br/> 
 { this.state.loading}
 
 
 <div className="row center">
   
 </div>
-<br/> <br/>
+
    
 </div> 
 </div> 
